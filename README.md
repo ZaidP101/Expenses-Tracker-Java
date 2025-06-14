@@ -1,6 +1,6 @@
 # Dockerized Java Spring Boot Application
 
-This README explains the **Docker setup and architecture** used to containerize and run a Java Spring Boot application backed by MySQL using **Docker Compose**.
+This README explains the **Docker setup and architecture** used to containerize and run a Java Spring Boot application backed by MySQL using **Docker Compose**, with NGINX configured as a **reverse proxy**.
 
 ## Docker Setup Overview
 
@@ -11,6 +11,7 @@ This setup uses:
 - **Named Docker networks** for inter-container communication
 - **Volumes** to persist MySQL data
 - **Healthchecks** to manage service readiness
+- **NGINX reverse proxy** to forward external traffic to the Spring Boot app
 
 
 ## Docker Run 
@@ -30,6 +31,9 @@ The ./mysql-data:/var/lib/mysql volume persists MySQL data even if the container
 
 ### Multi-Stage Build:
 Reduces final image size and attack surface.
+
+### NGINX Reverse Proxy
+An nginx service is included to forward external HTTP traffic to the internal Spring Boot container (expenseapp).
 
 
 ---
