@@ -1,3 +1,40 @@
+# Dockerized Java Spring Boot Application
+
+This README explains the **Docker setup and architecture** used to containerize and run a Java Spring Boot application backed by MySQL using **Docker Compose**.
+
+## Docker Setup Overview
+
+This setup uses:
+
+- **Multi-stage builds** for efficient image creation
+- **Docker Compose** to orchestrate multiple containers
+- **Named Docker networks** for inter-container communication
+- **Volumes** to persist MySQL data
+- **Healthchecks** to manage service readiness
+
+
+## Docker Run 
+```bash
+# Build and Start All Services:
+docker compose up --build
+
+# Stop and Remove Containers:
+docker compose down
+```
+## Key Concepts
+### Networks:
+Custom network (exp-app) allows containers to communicate via service names (e.g., mysql_db).
+
+### Volumes:
+The ./mysql-data:/var/lib/mysql volume persists MySQL data even if the container is removed.
+
+### Multi-Stage Build:
+Reduces final image size and attack surface.
+
+
+---
+---
+
 ![Language](https://img.shields.io/badge/language-Java%20-blue.svg)
 ![Technologies](https://img.shields.io/badge/technologies-Spring_boot%20-green.svg)
 ![Technologies](https://img.shields.io/badge/technologies-Spring_MVC%20-green.svg)
